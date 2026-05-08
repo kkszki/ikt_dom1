@@ -6,14 +6,19 @@
     <title>Document</title>
 </head>
 <body style="background-color: black;">
-    <div id="elso_player"></div>
+    <div id="elso_player" style="width: 90px; height: 90px;"></div>
+    <div id="masodik_player" style="width: 90px; height: 90px;"></div>
+
     <script>
 
 
 function general(){
-    let random=Math.floor(Math.random() * 6)+1;
+    let random1=Math.floor(Math.random() * 6)+1;
   
-    document.getElementById("elso_player").innerHTML= `<img src="${random}.png">`;
+    document.getElementById("elso_player").innerHTML= `<img src="${random1}.png">`;
+    let random2=Math.floor(Math.random() * 6)+1;
+    document.getElementById("masodik_player").innerHTML= `<img src="${random2}.png">`;
+
 }
 
     </script>
