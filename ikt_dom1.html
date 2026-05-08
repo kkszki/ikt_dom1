@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+.kozepre{
+    display: block; margin: 20px auto; height: 30px; font-size: 20px;
+}
+
+</style>
 <body style="background-color: gray;">
 
     <div style="display: flex; gap: 20px; justify-content: center;"> 
         <div style="text-align: center;">
         <div id="elso_player" style="width: 90px; height: 90px; background-color: gray; margin: 0 auto;">
-            
+
         </div>
         <div>Első játékos</div>
 </div>
@@ -19,6 +25,8 @@
   <div id="masodik_player" style="width: 90px; height: 90px; background-color: gray; margin: 0 auto;"></div>
   <div>Második játékos</div>
 </div>
+
+
       </div>
 
     <script>
@@ -30,11 +38,25 @@ function general(){
     document.getElementById("elso_player").innerHTML= `<img src="${random1}.png">`;
     let random2=Math.floor(Math.random() * 6)+1;
     document.getElementById("masodik_player").innerHTML= `<img src="${random2}.png">`;
+    if (random1>random2){
+        document.getElementById("nyert").innerHTML="1. játékos nyert";
+    }
+    else if( random1===random2){
+document.getElementById("nyert").innerHTML="Döntetlen";
+    }
+    else{
+        document.getElementById("nyert").innerHTML="2. játékos nyert";
+
+    }
 
 }
 
     </script>
    
 
-   <button id="general" style="display: block; margin: 20px auto; height: 30px; font-size: 20px;" onclick="general()">Generál</button></body>
+   <button id="general" class="kozepre" onclick="general()">Generál</button>
+   <p id="nyert" class="kozepre" style="text-align: center;">Nyerters</p>
+
+
+</body>
 </html>
