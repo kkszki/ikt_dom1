@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body style="background-color: black;">
-    <div id="elso_player" style="width: 90px; height: 90px;"></div>
-    <div id="masodik_player" style="width: 90px; height: 90px;"></div>
+<body style="background-color: gray;">
+
+    <div style="display: flex; gap: 20px; justify-content: center;"> 
+        <div style="text-align: center;">
+        <div id="elso_player" style="width: 90px; height: 90px; background-color: gray; margin: 0 auto;">
+            
+        </div>
+        <div>Első játékos</div>
+</div>
+
+<div style="text-align: center;">
+  <div id="masodik_player" style="width: 90px; height: 90px; background-color: gray; margin: 0 auto;"></div>
+  <div>Második játékos</div>
+</div>
+      </div>
 
     <script>
 
@@ -24,6 +36,5 @@ function general(){
     </script>
    
 
-    <button id="general" onclick="general()">Generál</button>
-</body>
+   <button id="general" style="display: block; margin: 20px auto; height: 30px; font-size: 20px;" onclick="general()">Generál</button></body>
 </html>
