@@ -6,7 +6,19 @@
     <title>Document</title>
 </head>
 <body style="background-color: black;">
-    <img src="5.png" alt="">
-    
+    <div id="elso_player"></div>
+    <script>
+
+
+function general(){
+    let random=Math.floor(Math.random() * 6)+1;
+  
+    document.getElementById("elso_player").innerHTML= `<img src="${random}.png">`;
+}
+
+    </script>
+   
+
+    <button id="general" onclick="general()">Generál</button>
 </body>
 </html>
