@@ -31,6 +31,8 @@
 
     <script>
 
+const eredmenyek=[];
+
 
 function general(){
     let random1=Math.floor(Math.random() * 6)+1;
@@ -40,14 +42,36 @@ function general(){
     document.getElementById("masodik_player").innerHTML= `<img src="${random2}.png">`;
     if (random1>random2){
         document.getElementById("nyert").innerHTML="1. játékos nyert";
+        eredmenyek.push({
+            nyert: "1. Játékos",
+            ponttal: random1-random2
+        });
     }
     else if( random1===random2){
 document.getElementById("nyert").innerHTML="Döntetlen";
+eredmenyek.push({
+            nyert: "Döntetlen",
+            ponttal: 0
+        });
     }
     else{
         document.getElementById("nyert").innerHTML="2. játékos nyert";
-
+eredmenyek.push({
+            nyert: "2. Játékos",
+            ponttal: random2-random1
+        });
     }
+
+    tablaBody.innerHTML = "";
+
+    for(let i = 0; i < eredmenyek.length; i++) {
+
+    tablaBody.innerHTML += "<tr>" +
+        "<td>" + eredmenyek[i].nyert + "</td>" +
+        "<td>" + eredmenyek[i].ponttal + "</td>" +
+    "</tr>";
+
+}
 
 }
 
@@ -57,6 +81,17 @@ document.getElementById("nyert").innerHTML="Döntetlen";
    <button id="general" class="kozepre" onclick="general()">Generál</button>
    <p id="nyert" class="kozepre" style="text-align: center;">Nyerters</p>
 
+
+
+   <table border="1" style="margin: auto;">
+  <thead>
+    <tr>
+      <th>Nyert</th>
+      <th>Ponttal</th>
+    </tr>
+  </thead>
+  <tbody id="tablaBody"></tbody>
+</table>
 
 </body>
 </html>
