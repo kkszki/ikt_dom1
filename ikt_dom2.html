@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="start" onclick="start()">Mehet</button>
+    <button onclick="vege()">Stop</button>
+    <script>
+let most = Date.now();
+function start(){
+    let random_kezdesido = Math.floor(Math.random() * 8);
+
+    setTimeout(() => {
+        document.getElementById("start").style.color = "red";
+        most = Date.now();
+    }, random_kezdesido * 1000);
+}
+
+
+
+        function vege(){
+            let vege=Date.now();
+            alert(vege-most);
+        }
+    </script>
+</body>
+</html>
