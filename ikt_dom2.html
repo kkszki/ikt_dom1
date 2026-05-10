@@ -4,27 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <button id="start" onclick="start()">Mehet</button>
-    <button onclick="vege()">Stop</button>
-    <script>
-let most = Date.now();
-function start(){
-    let random_kezdesido = Math.floor(Math.random() * 8);
 
-    setTimeout(() => {
-        document.getElementById("start").style.color = "red";
-        most = Date.now();
-    }, random_kezdesido * 1000);
+<style>
+    body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #1f1c2c, #0f0c29);
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+button{
+    padding: 18px 40px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    letter-spacing: 1px;
 }
 
 
 
-        function vege(){
-            let vege=Date.now();
-            alert(vege-most);
+#start:hover{
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+#start:active{
+    transform: scale(0.98);
+}
+
+#eredmeny{
+    margin-top: 25px;
+    font-size: 30px;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+</style>
+</head>
+<body>
+
+
+<button id="start" onclick="toggle()">Mehet</button>
+<p id="eredmeny">Eredmény: </p>
+<p id="record">Rekord: </p>
+    <script>
+
+document.getElementById("start").style.backgroundColor="green";
+let record =10000000;
+let most = 0;
+
+let fut = false;
+
+function toggle(){
+
+    if(!fut){
+     
+        fut = true;
+
+        document.getElementById("start").innerHTML = "Várjon...";
+      
+
+        let random_kezdesido = Math.floor(Math.random() * 8)+1;
+
+        setTimeout(() => {
+            document.getElementById("start").style.backgroundColor="red";
+
+            most = Date.now();
+            document.getElementById("start").innerHTML = "STOP!";
+        }, random_kezdesido * 1000);
+
+    } else {
+     
+        let vege = Date.now();
+        fut = false;
+
+        let eredmeny = vege - most;
+
+        document.getElementById("eredmeny").innerHTML = "Eredmény: " + eredmeny + " ms";
+
+        document.getElementById("start").innerHTML = "Mehet";
+        document.getElementById("start").style.color = "black";
+                document.getElementById("start").style.backgroundColor="green";
+        if (record>eredmeny){
+            record=eredmeny;
+            document.getElementById("record").innerHTML=`Rekord: ${record} ms`;
         }
+        clearTimeout(idozito);
+    }
+}
     </script>
 </body>
 </html>
